@@ -1,0 +1,13 @@
+# git上传文件忽略
+
+.DS_Store
+node_modules/
+/dist/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

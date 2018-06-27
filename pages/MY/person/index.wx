@@ -1,0 +1,176 @@
+
+<template>
+    <view class="container">
+        <!-- 个人信息 -->
+        <ui-blur url="{{ url }}" height="150">
+            <view class="person-wrap">
+                <view class="head-img" >
+                    <image src="{{ user.headUrl }}"/>
+                </view>
+                <view class="user-info">
+                    <view class="user">
+                        <text class="name">{{ user.name }}</text>
+                        <view class="level">{{ user.level }}</view>
+                    </view>
+                    <text class="company">{{ user.company }}</text>
+                </view>
+            </view>
+        </ui-blur>
+
+        <!-- 列表 -->
+        <view class="list-container">
+            <ui-row-list class="list-wrap" border-left-indent wx:for="{{menus}}" wx:for-item="menu">
+                <ui-row height="40" wx:for="{{menu.lists}}" wx:for-item="item" bindtap="nextPage" data-url="{{ item.path }}">
+                    <ui-col width="30" vertical-align="middle" align="center">
+                        <ui-icon type="all" size="20" color="red"></ui-icon>
+                    </ui-col>
+                    <ui-col class="text" vertical-align="middle">
+                        {{ item.title }}
+                    </ui-col>
+                    <ui-col width="30" vertical-align="middle" align="center">
+                        <ui-icon type="arrow-right" size="15"></ui-icon>
+                    </ui-col>
+                </ui-row>
+            </ui-row-list>
+        </view>
+    </view>
+</template>
+
+<script>
+export default {
+    config: {
+        navigationBarTitleText: "我的"
+    },
+    data: {
+        menus: [{
+            title: '分组1',
+            lists: [{
+                icon: '',
+                title: '我的作品',
+                path: ''
+            },{
+                icon: '',
+                title: '我的简历',
+                path: ''
+            },{
+                icon: '',
+                title: '我的收藏',
+                path: '',
+            }]
+        },{
+            title: '分组2',
+            lists: [{
+                icon: '',
+                title: '我的预约',
+                path: ''
+            },{
+                icon: '',
+                title: '我的工地',
+                path: ''
+            },{
+                icon: '',
+                title: '我的客户',
+                path: '',
+            },{
+                icon: '',
+                title: '跟单进度',
+                path: ''
+            }]
+        },{
+            title: '分组3',
+            lists: [{
+                icon: '',
+                title: '关于我们',
+                path: ''
+            },{
+                icon: '',
+                title: '设置',
+                path: '../setting/index'
+            }]
+        }],
+        url: '../../../images/banners/image-0.jpg',
+        user: {
+            headUrl: '../../../images/banners/image-0.jpg',
+            name: '小陈',
+            level: '高级',
+            company: '南京科创装饰有限公司'
+        }
+    },
+
+    nextPage(event){
+        let url = event.currentTarget.dataset.url;
+        wx.navigateTo({
+            url: url
+        })
+    }
+}
+</script>
+
+<style lang="less">
+    .person-wrap{
+        width: 100%;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        padding: 40rpx;
+        .head-img{
+            width: 130rpx;
+            height: 130rpx;
+            padding: 5rpx;
+            border-radius: 50%;
+            background: #fff;
+            margin-left: 60rpx;
+            margin-right: 40rpx;
+            flex-shrink: 0;
+            image{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        }
+        .user-info{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        
+            .user{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding-bottom: 20rpx;
+            }
+            .name{
+                font-size: 34rpx;
+                color: #333;
+            }
+            .level{
+                display: block;
+                height: 34rpx;
+                line-height: 34rpx;
+                width: 80rpx;
+                background: #1e90ff;
+                color: #fff;
+                text-align: center;
+                font-size: 24rpx;
+                border-radius: 17rpx;
+                margin-left: 20rpx;
+            }
+            .company{
+                font-size: 30rpx;
+                color: #555;
+            }
+        }
+    }
+
+    .list-wrap{
+        background: #fff;
+        margin-bottom: 20rpx;
+    }
+
+    .list-wrap .text{
+        color: #333;
+        font-size: 30rpx;
+    }
+</style>

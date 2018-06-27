@@ -1,0 +1,402 @@
+
+<template>
+    <view class="container">
+        <!-- 轮播图 -->
+        <view class="swiper-container">
+            <swiper class="swiper" circular autoplay interval="3000" bindchange="swiperChange">
+                <swiper-item wx:for="{{ banners }}" wx:for-item="banner" wx:for-index="index" wx:key="index">
+                    <image src="{{banner.imgUrl}}" />
+                    <!-- <text class="title">{{ banner.title }}</text> -->
+                </swiper-item>
+            </swiper> 
+            <!-- 自定义indicator -->
+            <view class="dots">
+                <block wx:for="{{ banners }}" wx:for-index="index" wx:key="index">
+                    <view class="dot{{ index == swiperCurrent?' active':' ' }}"></view>
+                </block>
+            </view>
+        </view>
+
+        <!-- 最新行业资讯 -->
+        <!-- <ui-roller class="trade-container" speed="300">
+            <ui-roller-item class="trade-item" wx:for="{{ trades }}" wx:for-item="trade">
+                <ui-row>
+                    <ui-col span="1">
+                        <text class="logo" style="color:#F00;">荐</text>
+                    </ui-col>
+                    <ui-col span="11">
+                        <text class="text">{{ trade.text }}</text>
+                    </ui-col>
+                </ui-row>
+            </ui-roller-item>
+        </ui-roller> -->
+
+        <!-- 作品列表 -->
+        <view class="section-title">
+            <ui-sticky  scroll-top="{{ scrollTop }}" custom-style="{{ customStyle }}" stick-on-tap>
+                <view>
+                    <view class="title">优秀作品</view>
+                </view>
+                <view slot="sticky">
+                    <view class="title">优秀作品</view>
+                </view>
+            </ui-sticky>
+        </view>
+        <view class="work-container">
+            <view class="work-item" wx:for="{{ banners }}" wx:for-item="banner" wx:for-index="index">
+                <view class="work-wrap work-{{index%3}}" wx:if="{{ index%3 == 0 }}">
+                    <image class="image" src="{{banner.imgUrl}}"/>
+                    <view class="content">
+                        <text class="title">{{ banner.title }}</text>
+                        <text class="text">作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述</text>
+                    </view>
+                </view>
+                <view class="work-wrap work-{{index%3}}" wx:if="{{ index%3 == 1 }}">
+                    <view class="content">
+                        <text class="title">{{ banner.title }}</text>
+                        <text class="text">作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述</text>
+                    </view>
+                    <view class="image-list">
+                        <image class="image" src="{{banner.imgUrl}}"/>
+                        <image class="image" src="{{banner.imgUrl}}"/>
+                        <image class="image" src="{{banner.imgUrl}}"/>
+                        <image class="image" src="{{banner.imgUrl}}"/>
+                        <image class="image" src="{{banner.imgUrl}}"/>
+                    </view>
+                </view>
+                <view class="work-wrap work-{{index%3}}" wx:if="{{ index%3 == 2 }}">
+                    <view class="content">
+                        <text class="title">{{ banner.title }}</text>
+                        <text class="text">作品描述作品描述作品描述作品描述作品描述作品描述作品描述作品描述</text>
+                    </view>
+                    <image class="image" src="{{banner.imgUrl}}"/>
+                </view>
+            </view>
+        </view>  
+
+         <!--出色设计师  -->
+         <view class="section-title">
+            <ui-sticky  scroll-top="{{ scrollTop }}" custom-style="{{ customStyle }}" stick-on-tap>
+                <view>
+                    <view class="title">高级设计师</view>
+                </view>
+                <view slot="sticky">
+                    <view class="title">高级设计师</view>
+                </view>
+            </ui-sticky>
+        </view>
+        <view class="designer-wrap">
+            <view class="designer-list">
+                <view class="designer-item" wx:for="{{ designers }}" wx:for-item="designer" style="background: url('{{designer.backUrl}}') center no-repeat; background-size: cover;">
+                    <image class="head-img" src="{{ designer.headUrl }}"/>
+                    <text class="name">{{ designer.name }}</text>
+                    <text class="level">{{ designer.level }}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+export default {
+    config: {
+         navigationBarTitleText: "首页"
+    },
+    data: {
+        NAV_HEIGHT:wx.STATUS_BAR_HEIGHT+wx.DEFAULT_HEADER_HEIGHT,
+        scrollTop: 0,
+        customStyle:{
+            'height': '30px',
+            'line-height': '30px'
+        },
+        banners: [{
+            title: '重庆豪华别墅装饰',
+            imgUrl: '../../../images/banners/image-0.jpg'
+        },{
+            title: '南京有才装修图-1',
+            imgUrl: '../../../images/banners/image-1.jpg'
+        },{
+            title: '南京有才装修图-2',
+            imgUrl: '../../../images/banners/image-3.jpg'
+        },{
+            title: '杭州有才装修分公司-1',
+            imgUrl: '../../../images/banners/image-4.jpg'
+        },{
+            title: '杭州有才装修分公司-1',
+            imgUrl: '../../../images/banners/image-5.jpg'
+        },{
+            title: '杭州有才装修分公司-1',
+            imgUrl: '../../../images/banners/image-1.jpg'
+        }],
+        swiperCurrent: 0,
+        trades: [{
+            id: '101',
+            text: '2018-06-25 南京多个装修公司人去楼空，领导层全部跑路。'
+        },{
+            id: '102',
+            text: '2018-06-15 小盼设计师成为公司的优秀员工，并获得领导的赞赏。'
+        },{
+            id: '103',
+            text: '2018-06-05 由于天气炎热，南京部分装修公司迎来了今天的淡季。'
+        }],
+        designers: [{
+            id: '1001',
+            name: '吴小盼',
+            level: "高级",
+            phone: "13556768765",
+            headUrl: '../../../images/banners/image-0.jpg',
+            backUrl: '../../../images/imgs/back-image-0.png'
+        },{
+            id: '1002',
+            name: '陈沫',
+            level: "中级",
+            phone: "13556768765",
+            headUrl: '../../../images/banners/image-1.jpg',
+            backUrl: '../../../images/imgs/back-image-1.png'
+        },{
+            id: '1003',
+            name: '小强',
+            level: "高级",
+            phone: "13556768765",
+            headUrl: '../../../images/banners/image-2.jpg',
+            backUrl: '../../../images/imgs/back-image-2.png'
+        },{
+            id: '1004',
+            name: '刘枫娑',
+            level: "高级",
+            phone: "13556768765",
+            headUrl: '../../../images/banners/image-3.jpg',
+            backUrl: '../../../images/imgs/back-image-3.png'
+        }]
+    },
+
+    swiperChange(e){
+        this.setData({
+            swiperCurrent: e.detail.current
+        })
+        console.log(this.swiperCurrent);
+    },
+
+    onPageScroll (e) {
+        this.setData({
+            scrollTop: e.scrollTop
+        })
+    },
+}
+</script>
+
+<style lang="less">
+   @import '../../../static/utils/mixins.less';
+    // .title{
+    //     width: 100%;
+    //     height: 40rpx;
+    //     line-height: 40rpx;
+    //     padding: 10rpx;
+    //     color: white;
+    //     font-size: 24rpx;
+    //     position: absolute;
+    //     bottom: 0;
+    //     background-color: rgba(0, 0, 0, 0.5);
+    // }
+
+    //自定义indicator
+    .swiper-container {
+        position: relative;
+    }
+
+    .swiper-container .swiper{
+        height: 150px;
+    }
+
+    .swiper-container .swiper .img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-container .dots{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 20rpx;
+        display: flex;
+        justify-content: center;
+        z-index: 9;
+    }
+
+    .swiper-container .dots .dot{
+        margin: 0 8rpx;
+        width: 14rpx;
+        height: 14rpx;
+        background: #fff;
+        border-radius: 8rpx;
+        transition: all .3s linear;
+    }
+
+    .swiper-container .dots .dot.active {
+        width: 24rpx;
+        background: #fff;
+        transition: all .3s linear;
+    }
+
+    // 行业资讯
+    .trade-container{
+        position: relative;
+        background: #fff;
+        padding: 0;
+        margin: 0;
+        .mix-1px(0, 0, 1, 0, #1e90ff);
+        .trade-item{
+            width: 100%;
+            padding: 6px 0;
+            .logo{
+                margin:0 10rpx;
+            }
+            .text{
+                width: 95%;
+                color: #333;
+                font-size: 26rpx;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .roller-text{
+        .mix-text-overflow();
+    }
+
+    .section-title .title{
+        display: flex;
+        height: 30px;
+        background: #ea986c;
+        padding: 0 20rpx;
+        color: #fff;
+        font-size: 28rpx;
+    }
+
+    .work-container{
+        background: #fff;
+        margin-bottom: 20rpx;
+    }
+
+    .work-item{
+        min-height: 200rpx;
+        width: 100%;
+        .mix-1px(0, 0, 1, 0, #ccc);
+        .work-wrap{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .image{
+                height: 180rpx;
+                width: 240rpx;
+                margin: 10rpx;
+                flex-shrink: 0;
+            }
+
+            .image-list{
+                overflow: scroll;
+                display: flex;
+                width: 100%;
+                flex-direction: row;
+                .image{
+                    float: left;
+                    flex-shrink: 0;
+                    &:first-of-type{
+                        margin-left: 0rpx;
+                    }
+                    
+                }
+            }
+            
+            transition: all .25s ease;
+            &:active{
+                background: #eee;
+                opacity: 0.9;
+            }
+
+            .title{
+                color: #333;
+                padding: 10rpx 0;
+            }
+
+            .text{
+                color: #999;
+                font-size: 26rpx;
+            }
+            .content{
+                display: flex;
+                flex-direction: column; 
+                justify-content: center;
+                margin: 10rpx;
+                flex-grow: 1;
+            }
+
+            &.work-0, &.work-2{
+                flex-direction: row;
+            }
+        }
+    }
+
+    .middle-img{
+        width: 80px;
+        height: 60px;
+    }
+
+    .small-img{
+        width: 60px;
+        height: 40px;
+        margin: 10rpx 0;
+    }
+
+    .active:active{
+        opacity: 0.75;
+    }
+
+    .designer-wrap{
+        background: #fff;
+        margin-bottom: 20rpx;
+        .designer-list{
+            display: flex;
+            overflow: scroll;
+            .designer-item{
+                flex-shrink: 0;
+                margin: 20rpx 10rpx;
+                width: 100px;
+                height: 120px;
+                box-shadow: 0 0 2px #ccc;
+                border-radius: 8rpx;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10rpx;
+                transition: all .25s ease;
+                position: relative;
+                overflow: hidden;
+                
+                &:active{
+                    background: #999;
+                }
+                
+                .head-img{
+                    width: 100rpx;
+                    height: 100rpx;
+                    border-radius: 50%;
+                    background: #1e90ff;
+                }
+                .name{
+                    color: orangered;
+                    font-size: 32rpx;
+                    font-weight: bold;
+                    padding: 10rpx 0;
+                }
+                .level{
+                    color: blue;
+                    font-size: 28rpx;
+                }            
+            }
+        }
+    }
+</style>
+
+

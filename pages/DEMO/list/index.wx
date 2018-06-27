@@ -1,0 +1,98 @@
+<template>
+    <view>
+        <view class="title">无缩进 上下边框</view>
+        <ui-row-list class="list1" bordered>
+            <ui-row height="45" wx:for="{{lists}}" wx:for-item="item">
+                <ui-col width="40" vertical-align="middle" align="center">
+                    <ui-icon type="all" size="20" color="red"></ui-icon>
+                </ui-col>
+                <ui-col class="text" vertical-align="middle">
+                    {{ item.title }}
+                </ui-col>
+                <ui-col width="30" vertical-align="middle" align="center">
+                    <ui-icon type="arrow-right" size="15"></ui-icon>
+                </ui-col>
+            </ui-row>
+        </ui-row-list>
+
+        <view class="title">底部边线左侧缩进</view>
+        <ui-row-list class="list1" border-left-indent>
+            <ui-row height="45" wx:for="{{lists}}" wx:for-item="item">
+                <ui-col width="40" vertical-align="middle" align="center">
+                    <ui-icon type="creditlevel" size="20" color="red"></ui-icon>
+                </ui-col>
+                <ui-col class="text" vertical-align="middle">
+                    {{ item.title }}
+                </ui-col>
+                <ui-col width="30" vertical-align="middle" align="center">
+                    <ui-icon type="arrow-right" size="15"></ui-icon>
+                </ui-col>
+            </ui-row>
+        </ui-row-list>
+
+        <view class="title">底部边线两侧缩进</view>
+        <ui-row-list class="list1" border-indent>
+            <ui-row height="45" wx:for="{{lists}}" wx:for-item="item">
+                <ui-col width="40" vertical-align="middle" align="center">
+                    <ui-icon type="filter" size="20" color="red"></ui-icon>
+                </ui-col>
+                <ui-col class="text" vertical-align="middle">
+                    {{ item.title }}
+                </ui-col>
+                <ui-col width="30" vertical-align="middle" align="center">
+                    <ui-icon type="arrow-right" size="15"></ui-icon>
+                </ui-col>
+            </ui-row>
+        </ui-row-list>
+    </view>
+</template>
+
+<!-- 事件 -->
+<script>
+    export default {
+        config: {
+            navigationBarTitleText: '栅格列表',
+        },
+        data: {
+            lists: [{
+                type: 'comment',
+                title: '飞行模式'
+            },{
+                type: 'comment',
+                title: 'Wi-Fi'
+            },{
+                type: 'comment',
+                title: '蓝牙'
+            },{
+                type: 'comment',
+                title: '蜂窝移动网络'
+            },{
+                type: 'comment',
+                title: '个人热点'
+            },{
+                type: 'comment',
+                title: 'VPN'
+            },{
+                type: 'comment',
+                title: '运营商'
+            }]
+        }
+    }
+</script>
+
+<!-- 样式 -->
+<style lang="less">
+    .title{
+        color: #fff;
+        width: 100%;
+        padding: 20rpx;
+        background-color: #1e90ff;
+    }
+
+    .list1{
+        background-color: #fff;
+        margin-bottom: 40rpx;
+    }
+</style>
+
+

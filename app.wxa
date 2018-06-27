@@ -1,0 +1,78 @@
+<template>
+  <view class="container">
+    <page></page>
+  </view>
+</template>
+
+<script>
+  import system from './static/utils/system';
+  export default {
+    config: {
+      usingComponents: {
+      },
+      pages: [
+        'pages/MY/home/index',
+        'pages/MY/person/index',
+        'pages/MY/setting/index',
+        'pages/DEMO/home/index',
+        'pages/DEMO/nav/index',
+        'pages/DEMO/row/index',
+        'pages/DEMO/list/index',
+        'pages/DEMO/fixed/index',
+        
+      ],
+      window: {
+        backgroundTextStyle: 'dark',
+        backgroundColor: '#fbf9fe',
+        navigationBarBackgroundColor: '#1e90ff',
+        navigationBarTitleText: 'TouchUI',
+        navigationBarTextStyle: 'white',
+      },
+      tabBar: {
+        color: "#bfbfbf",
+        selectedColor: "#1e90ff",
+        borderStyle: "white",
+        backgroundColor: "#ffffff",
+        list: [{
+          pagePath: "pages/MY/home/index",
+          text: "首页",
+          iconPath: "./images/tabbars/home.png",
+          selectedIconPath: "./images/tabbars/home-select.png"
+        },{
+          pagePath: "pages/MY/person/index",
+          text: "个人",
+          iconPath: "./images/tabbars/mine.png",
+          selectedIconPath: "./images/tabbars/mine-select.png"
+        },{
+          pagePath: "pages/DEMO/home/index",
+          text: "DEMO",
+          iconPath: "./images/tabbars/mine.png",
+          selectedIconPath: "./images/tabbars/mine-select.png"
+        }]
+      },
+      networkTimeout: {
+        request: 10000
+      },
+      theme: {
+        'theme-color': '#39f'
+      }
+    },
+    globalData: {
+
+    },
+    onLaunch () { 
+      system.attachInfo();
+    },
+    onShow () { },
+    onHide () { }
+  }
+</script>
+
+<style lang="less">
+@import './static/styles/index.less';
+page{
+  background-color: #fbf9fe;
+  height: 100%;
+  width: 100%;
+}
+</style>

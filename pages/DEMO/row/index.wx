@@ -1,0 +1,144 @@
+<template>
+    <view>
+        <view class="title">带边框 四等分</view>
+        <ui-row class="white" border-top border-bottom height="40" space-bottom="20">
+            <ui-col border-right align="center" vertical-align="middle">25%</ui-col>
+            <ui-col border-right align="center" vertical-align="middle">25%</ui-col>
+            <ui-col border-right align="center" vertical-align="middle">25%</ui-col>
+            <ui-col align="center" vertical-align="middle">25%</ui-col>
+        </ui-row>  
+
+        <view class="title">圆角无边框 四等分 有间隙</view>
+        <ui-row height="40" space-bottom="20">
+            <ui-col space="10" align="center">
+                <view class="back">25%</view>
+            </ui-col>
+            <ui-col space="10" align="center">
+                <view class="back">25%</view>
+            </ui-col>
+            <ui-col space="10" align="center">
+                <view class="back">25%</view>
+            </ui-col>
+            <ui-col space="10" align="center">
+                <view class="back">25%</view>
+            </ui-col>
+        </ui-row>  
+
+        <view class="title">带边框 二等分</view>
+        <ui-row class="white" height="40" border-top border-bottom>
+            <ui-col border-left border-right align="center" vertical-align="middle">
+                50%
+            </ui-col>
+            <ui-col border-right align="center" vertical-align="middle">
+                50%
+            </ui-col>
+        </ui-row>  
+        <ui-row class="white" height="40" border-bottom space-bottom="20">
+            <ui-col border-left border-right align="center" vertical-align="middle">
+                50%
+            </ui-col>
+            <ui-col border-right align="center" vertical-align="middle">
+                50%
+            </ui-col>
+        </ui-row>  
+
+        <view class="title">不带边框 二等分</view>
+        <ui-row height="40" space="20">
+            <ui-col space="10" align="center">
+                <view class="back">50%</view>
+            </ui-col>
+            <ui-col space="10" align="center">
+                <view class="back">50%</view>
+            </ui-col>
+        </ui-row>  
+        <ui-row height="40" space="20">
+            <ui-col space="10" align="center">
+                <view class="back">50%</view>
+            </ui-col>
+            <ui-col space="10" align="center">
+                <view class="back">50%</view>
+            </ui-col>
+        </ui-row> 
+
+        <view class="title">带边框的复杂布局</view> 
+        <ui-row class="white" height="80" border-top border-bottom space-bottom="20">
+            <ui-col border-right align="center" vertical-align="middle">
+                1
+            </ui-col>
+            <ui-col>
+                <ui-row border-bottom height="40">
+                    <ui-col border-right align="center" vertical-align="middle">
+                        2
+                    </ui-col>
+                    <ui-col border-right align="center" vertical-align="middle">
+                        3
+                    </ui-col>
+                </ui-row>
+                <ui-row border-bottom height="40">
+                    <ui-col border-right align="center" vertical-align="middle">
+                        4
+                    </ui-col>
+                    <ui-col border-right align="center" vertical-align="middle">
+                        5
+                    </ui-col>
+                </ui-row>
+            </ui-col>
+        </ui-row> 
+        <ui-row class="white" border-top border-bottom height="40">
+            <ui-col border-left border-right align="center" vertical-align="middle">1</ui-col>
+            <ui-col border-right align="center" vertical-align="middle">2</ui-col>
+        </ui-row>
+        <ui-row class="white" border-bottom height="40" space-bottom="20">
+            <ui-col border-left border-right align="center" vertical-align="middle">3</ui-col>
+            <ui-col border-right align="center" vertical-align="middle">4</ui-col>
+            <ui-col border-right align="center" vertical-align="middle">5</ui-col>
+            <ui-col border-right align="center" vertical-align="middle">6</ui-col>
+        </ui-row>
+
+        <view class="title">左侧区域固定 右侧两个按4:8分配</view> 
+        <ui-row class="white" border-top border-bottom height="40">
+            <ui-col border-left border-right width="60" align="center" vertical-align="middle">1</ui-col>
+            <ui-col>
+                <ui-row height="40">
+                    <ui-col span="4"  border-right align="center" vertical-align="middle">2</ui-col>
+                    <ui-col span="8" border-right align="center" vertical-align="middle">3</ui-col>
+                </ui-row>
+            </ui-col>
+        </ui-row>
+    </view>
+</template>
+
+<script>
+    export default {
+        config: {
+            navigationBarTitleText: '栅格布局',
+        },
+        data: {
+
+        }
+    }
+</script>
+
+<style lang="less">
+
+.title{
+    color: #fff;
+    width: 100%;
+    padding: 15rpx;
+    background-color: #42b983;
+}
+
+.white{
+    background-color: #fff;
+}
+
+.back{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 4rpx;
+    line-height: 40px;
+}
+
+</style>
+

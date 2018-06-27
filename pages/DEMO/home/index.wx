@@ -1,0 +1,101 @@
+<template>
+  <view class="menu-list">
+    <view wx:for="{{menus}}" class="menu" wx:key="index" wx:for-item="item"> 
+      <view class="section-title">{{ item.title }}</view>
+      <view wx:for="{{item.lists}}" class="menu-item" wx:key="subIndex" wx:for-item="subItem" bindtap="nextPage" data-url="{{subItem.path}}">
+        <text class="title">{{ subItem.title }}</text>
+        --
+        <text class="text">{{ subItem.text }}</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+export default {
+  config: {
+    navigationBarTitleText: 'DEMO',
+  },
+  data: {
+    menus: [{
+      title: '容器',
+      lists: [{
+        title: "Nav-bar",
+        text: "自定义导航栏",
+        path: '../nav/index'
+      },{
+        title: "Row&Col",
+        text: "栅格布局",
+        path: '../row/index'
+      },{
+        title: "Row-list",
+        text: "栅格列表",
+        path: '../list/index'
+      },{
+        title: "Fixed-view",
+        text: "位置固定容器",
+        path: '../fixed/index'
+      }]
+    },{
+      title: '表单',
+      lists: [{
+        title: "Slider",
+        text: "滑动条",
+        path: '../nav/index'
+      },{
+        title: "Ruler",
+        text: "标尺",
+        path: '../row/index'
+      },{
+        title: "Check-list",
+        text: "选择列表",
+        path: '../list/index'
+      },{
+        title: "Stepper",
+        text: "数字选择器",
+        path: '../fixed/index'
+      }]
+    },{
+      title: '媒体',
+      lists: []
+    },{
+      title: '图形化',
+      lists: []
+    },{
+      title: '官方组件补充',
+      lists: []
+    }]
+  },
+  nextPage(event){
+    let url = event.currentTarget.dataset.url;
+    wx.navigateTo({
+      url: url
+    })
+  }
+}
+</script>
+
+<style lang="less">
+  @import '../../../static/utils/mixins.less';
+  .section-title{
+    padding: 10rpx 20rpx;
+    background-color: #42b983;
+    color: white;
+  }
+  .menu-list{
+    width: 100%;
+    .menu{
+      margin-bottom: 0rpx;
+    }
+    .menu-item{
+      width: 100%;
+      padding: 20rpx 30rpx;
+      background-color: #fff;
+      .mix-1px(0, 0, 1, 0, #ccc);
+      .text{
+        color: #666;
+        font-size: 24rpx;
+      }
+    }
+  }
+</style>

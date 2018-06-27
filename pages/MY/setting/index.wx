@@ -1,0 +1,48 @@
+
+<template>
+    <view class="container">
+        <!-- 列表 -->
+        <view class="list-container">
+            <ui-row-list class="list-wrap" border-left-indent>
+                <ui-row height="40" wx:for="{{menus}}" wx:for-item="item">
+                    <ui-col width="30" vertical-align="middle" align="center">
+                        <ui-icon type="all" size="20" color="red"></ui-icon>
+                    </ui-col>
+                    <ui-col class="text" vertical-align="middle">
+                        {{ item.title }}
+                    </ui-col>
+                    <ui-col width="30" vertical-align="middle" align="center">
+                        <ui-icon type="arrow-right" size="15"></ui-icon>
+                    </ui-col>
+                </ui-row>
+            </ui-row-list>
+        </view>
+    </view>
+</template>
+
+<script>
+export default {
+    config: {
+        navigationBarTitleText: "设置"
+    },
+    data: {
+        menus: [{
+            icon: '',
+            title: '清楚缓存',
+            path: ''
+        }]
+    }
+}
+</script>
+
+<style lang="less">
+    .list-wrap{
+        background: #fff;
+        margin-bottom: 20rpx;
+    }
+
+    .list-wrap .text{
+        color: #333;
+        font-size: 30rpx;
+    }
+</style>
