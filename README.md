@@ -30,8 +30,7 @@ npm install touchui-wx-components@1.0.89
 ```
 #####项目目录结构
 
-![WechatIMG77.jpeg](/Users/chenjunqiang/Desktop/WechatIMG77.jpeg)
-
+![WechatIMG77.jpeg](https://upload-images.jianshu.io/upload_images/2928955-b0fa57e3a3531d08.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 使用
 
@@ -47,8 +46,8 @@ tui build
 ```
 
 #####微信开发工具启动项目
+![WechatIMG76.jpeg](https://upload-images.jianshu.io/upload_images/2928955-899322dbdf71e2dc.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![WechatIMG76.jpeg](/Users/chenjunqiang/Desktop/WechatIMG76.jpeg)
 
 ```
 1.项目目录是打包好的dist目录。
